@@ -128,7 +128,7 @@ export default function App(): JSX.Element {
         
         <div className="header-top">
           <div>
-            <h1>Tasks</h1>
+            <h1>Tasks - v1.1.0</h1>
             {todos.length > 0 && (
               <p className="last-updated">
                 Updated {formatDistanceToNow(new Date(todos[0].createdAt), { addSuffix: true })}

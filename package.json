@@ -1,6 +1,6 @@
 {
-  "name": "todo-app-portfolio-1",
-  "version": "1.0.0",
+  "name": "FancyToDoApp",
+  "version": "1.1.0",
   "description": "An Electron application with React and TypeScript",
   "main": "./out/main/index.js",
   "author": "example.com",
@@ -25,7 +25,8 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
     "@electron-toolkit/utils": "^4.0.0",
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "electron-updater": "^6.8.3"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",

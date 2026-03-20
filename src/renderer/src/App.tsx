@@ -32,6 +32,15 @@ export default function App(): JSX.Element {
   const [filterPriority, setFilterPriority] = useState<Todo['priority'] | 'All'>('All')
   const [sortBy, setSortBy] = useState<SortBy>('created')
   const [showForm, setShowForm] = useState(false)
+  const [updateMsg, setUpdateMsg] = useState('')
+  const [updateVersion, setUpdateVersion] = useState('')
+  const [updateProgress, setUpdateProgress] = useState<number | null>(null)
+
+  useEffect(() => {
+    window.api?.onUpdateStatus((msg: string) => setUpdateMsg(msg))
+    window.api?.onUpdateAvailable((version: string) => setUpdateVersion(version))
+    window.api?.onUpdateProgress((percent: number) => setUpdateProgress(percent))
+  }, [])
 
   useEffect(() => {
     const saved = localStorage.getItem('todos-v2')
@@ -103,9 +112,23 @@ export default function App(): JSX.Element {
   return (
     <div className="app">
       <header>
+        {updateVersion && (
+          <div className="update-banner">
+            <span>Version {updateVersion} is available.</span>
+            {updateProgress === null ? (
+              <button onClick={() => window.api?.downloadUpdate()}>Download</button>
+            ) : (
+              <span>Downloading... {updateProgress}%</span>
+            )}
+          </div>
+        )}
+        {updateMsg && !updateVersion && (
+          <div className="update-info">{updateMsg}</div>
+        )}
+        
         <div className="header-top">
           <div>
-            <h1>Tasks</h1>
+            <h1>Tasks - v1.1.0</h1>
             {todos.length > 0 && (
               <p className="last-updated">
                 Updated {formatDistanceToNow(new Date(todos[0].createdAt), { addSuffix: true })}

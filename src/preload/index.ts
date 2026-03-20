@@ -1,22 +1,24 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
-// Custom APIs for renderer
-const api = {}
+const api = {
+  onUpdateStatus: (cb: (msg: string) => void) =>
+    ipcRenderer.on('update-status', (_e, msg) => cb(msg)),
+  onUpdateAvailable: (cb: (version: string) => void) =>
+    ipcRenderer.on('update-available', (_e, version) => cb(version)),
+  onUpdateProgress: (cb: (percent: number) => void) =>
+    ipcRenderer.on('update-progress', (_e, percent) => cb(percent)),
+  downloadUpdate: () => ipcRenderer.send('download-update')
+}
 
-// Use `contextBridge` APIs to expose Electron APIs to
-// renderer only if context isolation is enabled, otherwise
-// just add to the DOM global.
 if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
-  } catch (error) {
-    console.error(error)
+    contextBridge.exposeInMainWorld('api', api as unknown)
+  } catch (e) {
+    console.error(e)
   }
 } else {
-  // @ts-ignore (define in dts)
-  window.electron = electronAPI
-  // @ts-ignore (define in dts)
-  window.api = api
+  ;(window as unknown as { electron: typeof electronAPI }).electron = electronAPI
+  ;(window as unknown as { api: typeof api }).api = api
 }

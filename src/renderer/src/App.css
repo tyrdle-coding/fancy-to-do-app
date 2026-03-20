@@ -1,0 +1,382 @@
+/* src/App.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: #1c1e22;
+  color: #e8e0d0;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 28px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Header ── */
+header { display: flex; flex-direction: column; gap: 20px; }
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Georgia', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #f5f0e8;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.btn-add {
+  padding: 8px 18px;
+  background: transparent;
+  color: #d4c5a9;
+  border: 1px solid #d4c5a9;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 400;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-add:hover { background: #d4c5a9; color: #1c1e22; }
+
+/* ── Stats ── */
+.stats { display: flex; gap: 12px; }
+
+.stat {
+  flex: 1;
+  background: #22252b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat span {
+  font-size: 26px;
+  font-weight: 300;
+  color: #f5f0e8;
+  font-family: 'Georgia', serif;
+  line-height: 1;
+}
+
+.stat {
+  font-size: 10px;
+  color: #6a6a62;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.stat.overdue { border-color: rgba(212, 176, 106, 0.3); }
+.stat.overdue span { color: #d4b06a; }
+
+/* ── Form card ── */
+.form-card {
+  background: #22252b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-main {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 2px;
+  font-size: 15px;
+  font-family: 'Georgia', serif;
+  color: #f5f0e8;
+  outline: none;
+  letter-spacing: 0.3px;
+  transition: border-color 0.2s;
+}
+.input-main:focus { border-bottom-color: #d4c5a9; }
+.input-main::placeholder { color: #4a4a44; font-style: italic; }
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 110px;
+}
+
+.field label {
+  font-size: 9px;
+  color: #6a6a62;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Georgia', serif;
+}
+
+.field select,
+.field input[type="date"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 7px 2px;
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  color: #c8bfb0;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.field select:focus,
+.field input[type="date"]:focus { border-bottom-color: #d4c5a9; }
+
+.field select option {
+  background: #22252b;
+  color: #c8bfb0;
+}
+
+.btn-submit {
+  align-self: flex-end;
+  padding: 8px 22px;
+  background: transparent;
+  color: #d4c5a9;
+  border: 1px solid #d4c5a9;
+  border-radius: 2px;
+  font-size: 10px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-submit:hover { background: #d4c5a9; color: #1c1e22; }
+
+/* ── Toolbar ── */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 1;
+  min-width: 160px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 2px;
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  color: #c8bfb0;
+  outline: none;
+  letter-spacing: 0.2px;
+  transition: border-color 0.2s;
+}
+.search:focus { border-bottom-color: #d4c5a9; }
+.search::placeholder { color: #4a4a44; font-style: italic; }
+
+.filters { display: flex; gap: 4px; }
+
+.filters button {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  color: #6a6a62;
+  font-size: 10px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filters button:hover { color: #c8bfb0; border-color: rgba(255, 255, 255, 0.25); }
+.filters button.active { border-color: #d4c5a9; color: #d4c5a9; }
+
+/* ── Sub-toolbar ── */
+.sub-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.filter-group select {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding: 5px 10px;
+  font-size: 10px;
+  font-family: 'Georgia', serif;
+  color: #c8bfb0;
+  letter-spacing: 0.8px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.filter-group select:focus { border-color: rgba(255,255,255,0.25); color: #e8e0d0; }
+
+.filter-group select option {
+  background: #c8bfb0;
+  color: #22252b;
+}
+
+.btn-clear {
+  background: transparent;
+  border: none;
+  color: #4a4a44;
+  font-size: 10px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.btn-clear:hover { color: #c86450; }
+
+/* ── Todo list ── */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #22252b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 14px 16px;
+  transition: background 0.15s;
+}
+.todo-item:last-child { border-bottom: none; }
+.todo-item:hover { background: #262930; }
+.todo-item.done { opacity: 0.38; }
+.todo-item.overdue-item { border-left: 2px solid rgba(212, 176, 106, 0.6); }
+
+.todo-item input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: #d4c5a9;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.todo-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.todo-text {
+  font-size: 14px;
+  font-family: 'Georgia', serif;
+  color: #e8e0d0;
+  letter-spacing: 0.2px;
+  line-height: 1.5;
+}
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: #3a3a34;
+}
+
+.todo-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 1px;
+  font-size: 9px;
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.priority-high   { border-color: rgba(200, 100, 80, 0.45); color: #c86450; }
+.priority-medium { border-color: rgba(200, 168, 74, 0.45); color: #c8a84a; }
+.priority-low    { border-color: rgba(100, 160, 120, 0.45); color: #64a078; }
+.cat             { border-color: rgba(200, 192, 176, 0.15); color: #6a6a62; }
+
+.due { font-size: 10px; color: #4a4a44; letter-spacing: 0.5px; font-family: 'Georgia', serif; }
+.due-overdue { color: #c8a84a; }
+
+/* ── Delete ── */
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: #2e2e28;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 3px;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+.btn-delete:hover { color: #c86450; }
+
+/* ── Empty & summary ── */
+.empty {
+  text-align: center;
+  color: #3a3a34;
+  font-size: 13px;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  padding: 48px 0;
+  letter-spacing: 0.3px;
+}
+
+.summary {
+  text-align: center;
+  font-size: 10px;
+  color: #4a4a44;
+  font-family: 'Georgia', serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.last-updated {
+  font-size: 10px;
+  color: #4a4a44;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
